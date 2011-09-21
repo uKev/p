@@ -27,6 +27,15 @@ from service import formater
 paste = Paster("p.db")
 
 
+def force_unicode(obj, encoding='utf-8'):
+    if isinstance(obj, basestring):
+        if not isinstance(obj, unicode):
+            obj = unicode(obj, encoding)
+        return obj
+
+fu = force_unicode
+
+
 @route("/")
 @view("index")
 def index():
@@ -41,7 +50,8 @@ def add_paste():
     if f.format not in formater.formats_short:
         f.format = formater.format_default
     if f.title and f.content and f.format:
-        key = paste.add(f.title, f.content, f.format, request['REMOTE_ADDR'])
+        key = paste.add(fu(f.title), fu(f.content),
+        fu(f.format), request['REMOTE_ADDR'])
         redirect("/" + key)
     else:
         abort(400, "You did not provide all required fields.")
