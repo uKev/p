@@ -29,6 +29,6 @@ formats_short.sort(key=str.lower)
 
 
 def format(content, source_format):
-    lexer = get_lexer_by_name(source_format, stripall=True)
+    lexer = get_lexer_by_name(source_format, stripall=False)
     formatter = HtmlFormatter(linenos=True, cssclass="source")
     return highlight(content, lexer, formatter)
