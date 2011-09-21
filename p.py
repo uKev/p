@@ -16,6 +16,7 @@ import os
 # packed 3rd party python module
 sys.path.append(os.path.join(os.path.dirname(__file__), "lib"))
 from bottle import route, run, static_file, view, abort, redirect, request
+from bottle import response
 
 sys.path.append(os.path.dirname(__file__))
 # own python module
@@ -70,6 +71,7 @@ def view_paste(key):
 def view_paste_raw(key):
     try:
         thing = paste.thing[key]
+        response.content_type = "text/plain"
         return thing[1]
     except KeyError:
         abort(404, "Key " + key + " not found")
