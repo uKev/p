@@ -12,14 +12,32 @@
             	<textarea name="content" cols=100 rows=20 autofocus>{{content}}</textarea><br>
             	Format:
             	<select name="format" size="1">
+
+            	 <optgroup label="Top 10">
+%selected = False
+%for format in top_formats:
+%	format = format["format"]
+%   format_long = formats_short_to_long[format]
+%    if format_used == format and not selected:
+            	        <option value="{{format}}" selected>{{format_long}}</option>
+            	        % selected = True
+%    else:
+            	        <option value="{{format}}">{{format_long}}</option>
+%    end
+%end
+</optgroup>
+<optgroup label="Alle">
+
 %for format in formats_long:
 %    format_short = formats_long_to_short[format]
-%    if format_used == format_short:
+%    if format_used == format_short and not selected:
             	        <option value="{{format_short}}" selected>{{format}}</option>
+            	        % selected = True
 %    else:
             	        <option value="{{format_short}}">{{format}}</option>
 %    end
 %end
+</optgroup>
             	        </select>
             	<br>
             	<input type="submit" value="paste"></input>

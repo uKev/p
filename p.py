@@ -41,6 +41,8 @@ fu = force_unicode
 def index():
     return {"format_default": formater.format_default,
             "formats_long_to_short": formater.formats_long_to_short,
+            "formats_short_to_long": formater.formats_short_to_long,
+            "top_formats": paste.top_formats,
             "formats_long": formater.formats_long}
 
 
@@ -71,7 +73,9 @@ def view_paste(key):
             "format_used": thing["format"],
             "time": thing["time"],
             "formats_long_to_short": formater.formats_long_to_short,
+            "formats_short_to_long": formater.formats_short_to_long,
             "formats_long": formater.formats_long,
+            "top_formats": paste.top_formats,
             "key": key}
     except KeyError:
         abort(404, "Key " + key + " not found")
