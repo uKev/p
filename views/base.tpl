@@ -9,8 +9,8 @@
             % end
             <style type="text/css">
               html {background-color: #eee; font-family: sans;}
-              body {background-color: #fff; border: 1px solid #ddd; padding: 15px; margin: 15px;}
-              pre {background-color: #eee; border: 1px solid #ddd; padding: 5px;}
+              body {background-color: #fff; border: 1px solid #ddd; padding: 15px; margin: 15px; }
+              pre {background-color: #eee; border: 1px solid #ddd; padding: 5px; line-height: 1.3em;}
 
             .source .hll { background-color: #ffffcc }
             .source .c { color: #408080; font-style: italic } /* Comment */
