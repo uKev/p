@@ -81,7 +81,7 @@ def view_paste(key):
 def view_paste_raw(key):
     try:
         thing = paste.thing[key]
-        response.content_type = "text/plain"
+        response.content_type = "text/plain; charset=utf-8"
         return thing[1]
     except KeyError:
         abort(404, "Key " + key + " not found")
