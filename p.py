@@ -62,14 +62,14 @@ def add_paste():
 def view_paste(key):
     try:
         thing = paste.thing[key]
-        format = thing[2]
+        format = thing["format"]
         if format not in formater.formats_short:
             format = formater.default_format
-        return {"title": thing[0],
-            "content": thing[1],
-            "content_html": formater.format(thing[1], format),
-            "format_used": thing[2],
-            "time": thing[4],
+        return {"title": thing["title"],
+            "content": thing["content"],
+            "content_html": formater.format(thing["content"], format),
+            "format_used": thing["format"],
+            "time": thing["time"],
             "formats_long_to_short": formater.formats_long_to_short,
             "formats_long": formater.formats_long,
             "key": key}
@@ -82,7 +82,7 @@ def view_paste_raw(key):
     try:
         thing = paste.thing[key]
         response.content_type = "text/plain; charset=utf-8"
-        return thing[1]
+        return thing["content"]
     except KeyError:
         abort(404, "Key " + key + " not found")
 

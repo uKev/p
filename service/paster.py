@@ -48,7 +48,8 @@ class Paster(object):
 
     def __init__(self, db_file):
         self.db_file = db_file
-        self.__connection = sqlite3.connect(db_file)
+        self.__connection = sqlite3.connect(db_file, detect_types=sqlite3.PARSE_DECLTYPES)
+        self.__connection.row_factory = sqlite3.Row
         self.thing = GetThing(self.__connection)
 
         c = self.__connection.cursor()
