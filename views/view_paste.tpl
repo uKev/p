@@ -1,3 +1,6 @@
+% if title != "no title":
+	<br><h2>{{title}}</h2>	
+% end
 {{! content_html}}
 <a href="{{key}}/raw">raw data</a>
 <hr>
@@ -22,4 +25,8 @@
             	<input type="submit" value="paste"></input>
             </form>
             <p>Back to <a href="/">Index</a></p>
+%if title != "no title":
+%rebase base title = title
+%else:
 %rebase base
+%end

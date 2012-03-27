@@ -2,7 +2,11 @@
     <html>
         <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+            % if defined('title'):
+            <title>{{title}} - on p - the paste-Service</title>
+            % else:
             <title>p - the paste-Service</title>
+            % end
             <style type="text/css">
               html {background-color: #eee; font-family: sans;}
               body {background-color: #fff; border: 1px solid #ddd; padding: 15px; margin: 15px;}
