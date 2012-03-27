@@ -13,18 +13,18 @@ import os
 
 # 3rd party python module
 
-# packed 3rd party python module
-sys.path.append(os.path.join(os.path.dirname(__file__), "lib"))
 from bottle import route, run, static_file, view, abort, redirect, request
 from bottle import response
+import bottle
 
 sys.path.append(os.path.dirname(__file__))
+
 # own python module
 from service.paster import Paster
 from service import formater
 
 
-paste = Paster("p.db")
+paste = Paster(os.path.join(os.path.dirname(__file__),"p.db"))
 
 
 def force_unicode(obj, encoding='utf-8'):
@@ -91,12 +91,12 @@ def view_paste_raw(key):
 def server_static(path):
     return static_file(path, root='./static')
 
+bottle.TEMPLATE_PATH.insert(0,
+        os.path.join(os.path.dirname(__file__), 'views/'))
+
 if __name__ == '__main__':
-    import bottle
     bottle.debug(True)
     run(host="localhost", port=8080, reloader=True)
 else:
-    import bottle
-    bottle.TEMPLATE_PATH.insert(0,
-        os.path.join(os.path.dirname(__file__), 'views/'))
+    
     application = bottle.default_app()
