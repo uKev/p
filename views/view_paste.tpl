@@ -2,7 +2,9 @@
 	<br><h2>{{title}}</h2>	
 % end
 {{! content_html}}
-<a href="{{key}}/raw">raw data</a>
+ <form method="post" action="/{{key}}/d"><a href="{{key}}/raw">raw data</a> | 
+	<input type="text" size=2 name="diffkey" placeholder="id"></input> <input type="submit" value="diff"></input></form>
+</form>
 <hr>
             <p>Paste the data you want to share:</p>
             <form method="post" action="/">

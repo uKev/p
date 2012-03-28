@@ -7,6 +7,9 @@
             % else:
             <title>p - the paste-Service</title>
             % end
+            % bg_color = "#eee"
+            % border_color = "#ddd"
+            % border = "1px solid #ddd"
             <style type="text/css">
               html {background-color: #eee; font-family: sans;}
               body {background-color: #fff; border: 1px solid #ddd; padding: 15px; margin: 15px; }
@@ -73,6 +76,32 @@
             .source .vg { color: #19177C } /* Name.Variable.Global */
             .source .vi { color: #19177C } /* Name.Variable.Instance */
             .source .il { color: #666666 } /* Literal.Number.Integer.Long */
+           
+	        table.diff {font-family:monospace; border-style:none;font-size: smaller; border-collapse: separate; border-spacing: 0.3em 0em}
+	        
+	        td.diff_header {text-align:right}
+	        
+	        table.diff tr { border: none;}
+	        table.diff th { border: none;}
+	        table.diff th.diff_next { border: none;}
+	        table.diff thead { border: none;}
+	        
+	        table.diff tbody { border: none;}
+	        table.diff colgroup { border: none;}
+	        table.diff td {vertical-align: top; padding: 0.2em; background-color: {{bg_color}}; border-right: {{border}}; border-left: {{border}};}
+	        table.diff tr:first-child td {border-top: {{border}};}
+	        table.diff tr:last-child td {border-bottom: {{border}};}
+	        
+	        
+	        table.diff tr:first-child td.diff_next {border-top: none;}
+	        table.diff tr:last-child td.diff_next {border-bottom: none;}
+	        
+	        table.diff td.diff_next {background-color:#ffffff; border: none}
+	        table.diff td.diff_header {padding-right: 1em;}
+	        .diff_add {background-color:#aaffaa}
+	        .diff_chg {background-color:#ffff77}
+	        .diff_sub {background-color:#ffaaaa}
+
             </style>
             <link rel="shortcut icon" href="/static/favicon.ico">
         </head>

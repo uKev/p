@@ -10,6 +10,7 @@ p is a paste service. As the brother of s it is designed to be fast and small.
 # python standard library
 import sys
 import os
+import difflib
 
 # 3rd party python module
 
@@ -25,7 +26,7 @@ from service import formater
 
 
 paste = Paster(os.path.join(os.path.dirname(__file__),"p.db"))
-
+hdiffer = difflib.HtmlDiff(wrapcolumn=82)
 
 def force_unicode(obj, encoding='utf-8'):
     if isinstance(obj, basestring):
@@ -79,6 +80,32 @@ def view_paste(key):
             "key": key}
     except KeyError:
         abort(404, "Key " + key + " not found")
+
+@route("/:key1/d", method="POST")
+def redirect_to_diff(key1):
+    redirect("/"+key1+"/d/"+request.forms.diffkey)
+
+@route("/:key1/d/:key2")
+@view("view_diff")
+def view_html_diff(key1, key2):
+    try:
+        thing1 = paste.thing[key1]
+        thing2 = paste.thing[key2]
+        title1 = thing1["title"]
+        title2 = thing2["title"]
+        if title1 == "no title":
+            title1 = key1
+        if title2 == "no title":
+            title2 = key2
+        
+        return {"title1": title1,
+                "title2": title2,
+            "content_html": hdiffer.make_table(thing1["content"].splitlines(1), thing2["content"].splitlines(1), title1, title2),
+            "key1": key1,
+            "key2": key2,
+            }
+    except KeyError:
+        abort(404, "Key " + key1 + " or " + key2 + " not found")
 
 
 @route("/:key/raw")
