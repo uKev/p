@@ -67,7 +67,7 @@ def view_paste(key):
         thing = paste.thing[key]
         format = thing["format"]
         if format not in formater.formats_short:
-            format = formater.default_format
+            format = formater.format_default
         return {"title": thing["title"],
             "content": thing["content"],
             "content_html": formater.format(thing["content"], format),
