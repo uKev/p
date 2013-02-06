@@ -6,6 +6,9 @@ Created on 20.09.2011
 p is a paste service. As the brother of s it is designed to be fast and small.
 
 @author: Kevin Zuber
+
+Copyright (c) 2011, Kevin Zuber.
+License: MIT (see LICENSE for details)
 '''
 # python standard library
 import sys
@@ -97,7 +100,7 @@ def view_html_diff(key1, key2):
             title1 = key1
         if title2 == "no title":
             title2 = key2
-        
+
         return {"title1": title1,
                 "title2": title2,
             "content_html": hdiffer.make_table(thing1["content"].splitlines(1), thing2["content"].splitlines(1), title1, title2),
@@ -129,5 +132,5 @@ if __name__ == '__main__':
     bottle.debug(True)
     run(host="localhost", port=8080, reloader=True)
 else:
-    
+
     application = bottle.default_app()

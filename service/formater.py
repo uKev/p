@@ -3,6 +3,9 @@
 Created on 20.09.2011
 
 @author: Kevin Zuber
+
+Copyright (c) 2011, Kevin Zuber.
+License: MIT (see LICENSE for details)
 '''
 from pygments import highlight
 from pygments.lexers import get_lexer_by_name

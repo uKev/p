@@ -3,6 +3,9 @@
 Created on 20.09.2011
 
 @author: Kevin Zuber
+
+Copyright (c) 2011, Kevin Zuber.
+License: MIT (see LICENSE for details)
 '''
 import sqlite3
 import time
@@ -49,11 +52,11 @@ class Paster(object):
     @property
     def top_formats(self):
         c = self.__connection.cursor()
-        rows = c.execute("""SELECT count(format) AS count, format FROM pastes 
-        GROUP BY format ORDER BY count DESC LIMIT 10  
+        rows = c.execute("""SELECT count(format) AS count, format FROM pastes
+        GROUP BY format ORDER BY count DESC LIMIT 10
         """).fetchall()
         return rows
-    
+
     def __init__(self, db_file):
         self.db_file = db_file
         self.__connection = sqlite3.connect(db_file, detect_types=sqlite3.PARSE_DECLTYPES)
@@ -74,4 +77,4 @@ class Paster(object):
         id = c.lastrowid
         self.__connection.commit()
         return id_to_key(id)
-    
+
