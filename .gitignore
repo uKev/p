@@ -1,0 +1,4 @@
+lib**
+**.pyc
+p.db
+fabfile.py
